@@ -1,11 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	http.HandleFunc("/", rootHandler)
 	http.ListenAndServe(":8080", nil)
+}
+
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "/views/index.html")
 }
