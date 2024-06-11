@@ -1,0 +1,29 @@
+
+
+body {
+  background: #121212;
+  font-family: 'Courier New', monospace;
+  color: #bfbfbf;
+}
+
+h1 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #bfbfbf;
+}
+
+.terminal-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.terminal-lines li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.terminal-lines li:before {
+  content: "> ";
+}
