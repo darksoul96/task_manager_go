@@ -39,7 +39,7 @@ h1 {
 }
 
 
-input {
+#input-command {
   color: #bfbfbf;
   background: #121212;
   border: 0;
@@ -47,10 +47,17 @@ input {
   width: 30%;
 }
 
-input:focus {
+#input-command:focus {
   outline: none;
 }
 
+#input-command-wrapper {
+  margin-left: 35px;
+}
+
+#input-command-wrapper:before {
+  content: "> ";
+}
 
 
 

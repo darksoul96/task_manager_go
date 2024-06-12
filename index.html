@@ -17,27 +17,20 @@
       </span>
 
       <ul class="terminal-lines" id="terminal-lines">
-        <li>
-          <input type="text" id="input-command" 
-            name="command"
-            hx-post="/validate"
-            hx-trigger="keyup[key=='Enter']"
-            hx-target="#terminal-lines"
-            hx-swap="afterbegin"
-          />
-        </li>
       </ul>
-
+      <div id="input-command-wrapper">
+        <input type="text" id="input-command" 
+          name="command"
+          hx-post="/validate"
+          hx-trigger="keyup[key=='Enter']"
+          hx-target="#terminal-lines"
+          hx-swap="beforeend"
+        />
+      </div>
       <div id="error" class="error"></div>
     </div>
 
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    <script>
-      document.body.addEventListener('htmx:configRequest', function (event) {
-        
-
-      });
-    </script>
    </body>
 
 </html>

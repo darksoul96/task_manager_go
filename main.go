@@ -7,10 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type InputData struct {
-	Input string `json:"input" binding:"required"`
-}
-
 func main() {
 	r := gin.Default()
 	r.Static("/static", "./static")
@@ -21,20 +17,14 @@ func main() {
 	})
 
 	r.POST("/validate", func(ctx *gin.Context) {
-		var text string
 		var responseText string
-		text = ctx.PostForm("command")
-		fmt.Println(text)
-		if text == "help" {
+		command := ctx.PostForm("command")
+		fmt.Println(command)
+		switch command {
+		case "help":
 			responseText = HelpMessage()
 		}
-		ctx.Data(http.StatusOK, "text/html, charset=utf-8", []byte("<li>"+responseText+"</li>"))
-	})
-
-	r.GET("/ping", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
+		ctx.Data(http.StatusOK, "command/html, charset=utf-8", []byte("<li>"+command+responseText+"</li>"))
 	})
 
 	r.Run("localhost:8080")
