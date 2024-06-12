@@ -6,19 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// func main() {
-// 	fs := http.FileServer(http.Dir("static"))
-// 	http.Handle("/static/", http.StripPrefix("/static/", fs))
-// 	http.HandleFunc("/", rootHandler)
-// 	http.ListenAndServe(":8080", nil)
-// }
-//
-// // Handlers
-//
-// func rootHandler(w http.ResponseWriter, r *http.Request) {
-// 	http.ServeFile(w, r, "index.html")
-// }
-//
+type InputData struct {
+	Input string `json:"input" binding:"required"`
+}
 
 func main() {
 	r := gin.Default()
@@ -27,6 +17,18 @@ func main() {
 
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "index.html", nil)
+	})
+
+	r.POST("/validate", func(ctx *gin.Context) {
+		// var input InputData
+		// if err := ctx.ShouldBindJSON(&input); err != nil {
+		// 	ctx.JSON(http.StatusBadRequest, gin.H{"error": "Bad input"})
+		// 	return
+		// }
+		var text string
+		ctx.GetString(text)
+
+		ctx.JSON(http.StatusOK, gin.H{"input": text})
 	})
 
 	r.GET("/ping", func(ctx *gin.Context) {
