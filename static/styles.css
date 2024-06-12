@@ -16,6 +16,12 @@ h1 {
   color: #bfbfbf;
 }
 
+.terminal span {
+  margin-left: 40px;
+  color: #717171;
+  font-style: italic;
+}
+
 .terminal-lines {
   list-style: none;
   margin: 0;

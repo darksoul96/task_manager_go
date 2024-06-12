@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -20,15 +21,14 @@ func main() {
 	})
 
 	r.POST("/validate", func(ctx *gin.Context) {
-		// var input InputData
-		// if err := ctx.ShouldBindJSON(&input); err != nil {
-		// 	ctx.JSON(http.StatusBadRequest, gin.H{"error": "Bad input"})
-		// 	return
-		// }
 		var text string
-		ctx.GetString(text)
-
-		ctx.JSON(http.StatusOK, gin.H{"input": text})
+		var responseText string
+		text = ctx.PostForm("command")
+		fmt.Println(text)
+		if text == "help" {
+			responseText = HelpMessage()
+		}
+		ctx.Data(http.StatusOK, "text/html, charset=utf-8", []byte("<li>"+responseText+"</li>"))
 	})
 
 	r.GET("/ping", func(ctx *gin.Context) {
