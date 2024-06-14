@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/go-humble/locstor"
@@ -9,7 +10,7 @@ import (
 
 func HelpMessage() string {
 	var message string
-	message = "\nType 'clear' to clear the screen.\n"
+	message = "\ntype 'clear' to clear the screen.\n"
 	message += "Type 'add' to add a new task.'\n"
 	message += "Type 'list' to list all tasks.\n"
 	message += "Type 'done' to mark a task as done.\n"
@@ -23,6 +24,9 @@ func AddTask(task string) {
 	if err != nil {
 		fmt.Println("error")
 	}
+	locstor.SetItem(strconv.Itoa(count), task)
+}
 
-	fmt.Println(count)
+func ListTasks() string {
+	return ""
 }
