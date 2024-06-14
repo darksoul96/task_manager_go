@@ -11,22 +11,33 @@ body {
 
 h1 {
   margin-bottom: 20px;
-  margin-top: 20px;
-  margin-left: 25px;
+  margin-top: 40px;
+  margin-left: 75px;
   color: #bfbfbf;
+}
+
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 70vh;
+  padding-top: 30px;
+  padding-left: 20%;
 }
 
 .terminal span {
   margin-left: 40px;
   color: #717171;
   font-style: italic;
+  margin-bottom: 20px;
 }
 
 .terminal-lines {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: 40px;
+  overflow-y: scroll;
 }
 
 .terminal-lines li {
@@ -51,9 +62,6 @@ h1 {
   outline: none;
 }
 
-#input-command-wrapper {
-  margin-left: 35px;
-}
 
 #input-command-wrapper:before {
   content: "> ";
